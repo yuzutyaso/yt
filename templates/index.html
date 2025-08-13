@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>YouTube Video Info</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .container { max-width: 800px; margin: auto; }
+        .result { margin-top: 20px; border: 1px solid #ccc; padding: 15px; border-radius: 8px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>YouTube Video Info Checker</h1>
+        <form action="/" method="post">
+            <label for="url">YouTube URL:</label>
+            <input type="text" id="url" name="url" style="width: 70%;" required>
+            <button type="submit">Get Info</button>
+        </form>
+
+        {% if video_info %}
+        <div class="result">
+            <h2>{{ video_info.get('title', 'No Title') }}</h2>
+            <p><strong>動画の長さ:</strong> {{ video_info.get('duration_string', 'N/A') }}</p>
+            <p><strong>アップローダー:</strong> {{ video_info.get('uploader', 'N/A') }}</p>
+            <p><strong>視聴回数:</strong> {{ "{:,.0f}".format(video_info.get('view_count', 0)) }}</p>
+            <p><strong>サムネイル:</strong></p>
+            <img src="{{ video_info.get('thumbnail') }}" alt="Thumbnail" style="max-width: 100%; height: auto;">
+        </div>
+        {% elif request.method == 'POST' %}
+        <div class="result">
+            <p>動画情報の取得に失敗しました。URLが正しいか確認してください。</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+  </html>
