@@ -29,5 +29,6 @@ def index():
             video_info = get_video_info(url)
     return render_template('index.html', video_info=video_info)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# 開発用サーバーの起動コードは削除
+# if __name__ == '__main__':
+#     app.run(debug=True)
