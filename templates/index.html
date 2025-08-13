@@ -7,6 +7,8 @@
         body { font-family: sans-serif; padding: 20px; }
         .container { max-width: 800px; margin: auto; }
         .result { margin-top: 20px; border: 1px solid #ccc; padding: 15px; border-radius: 8px; }
+        input[type="text"] { width: 70%; padding: 8px; }
+        button { padding: 8px 12px; }
     </style>
 </head>
 <body>
@@ -14,7 +16,7 @@
         <h1>YouTube Video Info Checker</h1>
         <form action="/" method="post">
             <label for="url">YouTube URL:</label>
-            <input type="text" id="url" name="url" style="width: 70%;" required>
+            <input type="text" id="url" name="url" required>
             <button type="submit">Get Info</button>
         </form>
 
@@ -34,4 +36,4 @@
         {% endif %}
     </div>
 </body>
-  </html>
+</html>
